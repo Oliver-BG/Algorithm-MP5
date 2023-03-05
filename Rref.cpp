@@ -27,7 +27,7 @@ void gauss_jordan(vector<vector<double>> &matrix)
             matrix[j][i] = 0; // Set entry to 0 for numerical stability
         }
 
-        cout << "Intermediate matrix after elimination of variable x" << i + 1 << ":\n";
+        cout << "" << i + 1 << ":\n";
         for (const auto &row : matrix)
         {
             for (const auto &elem : row)
