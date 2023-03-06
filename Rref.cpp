@@ -7,7 +7,7 @@ using namespace std;
 void gauss_jordan(vector<vector<double>> &matrix)
 {
     int n = matrix.size();
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < 2; i++) // modified loop
     {
         double pivot = matrix[i][i];
 
@@ -16,17 +16,20 @@ void gauss_jordan(vector<vector<double>> &matrix)
             matrix[i][k] /= pivot;
         }
 
-        for (int j = i + 1; j < n; j++)
+        for (int j = 0; j < n; j++)
         {
-            double factor = matrix[j][i] / pivot;
-            for (int k = i + 1; k < n; k++)
+            if (j != i)
             {
-                matrix[j][k] -= factor * matrix[i][k];
+                double factor = matrix[j][i] / matrix[i][i];
+                for (int k = i + 1; k < n; k++)
+                {
+                    matrix[j][k] -= factor * matrix[i][k];
+                }
+                matrix[j][i] = 0;
             }
-            matrix[j][i] = 0; // Set entry to 0 for numerical stability
         }
 
-        cout << "" << i + 1 << ":\n";
+        cout << "Iteration " << i + 1 << ":\n";
         for (const auto &row : matrix)
         {
             for (const auto &elem : row)
@@ -36,19 +39,6 @@ void gauss_jordan(vector<vector<double>> &matrix)
             cout << '\n';
         }
         cout << '\n';
-    }
-
-    for (int i = n - 1; i >= 0; i--)
-    {
-        double pivot = matrix[i][i];
-        for (int j = i - 1; j >= 0; j--)
-        {
-            double factor = matrix[j][i];
-            for (int k = i; k >= 0; k--)
-            {
-                matrix[j][k] -= factor * matrix[i][k];
-            }
-        }
     }
 
     cout << "Final matrix:\n";
