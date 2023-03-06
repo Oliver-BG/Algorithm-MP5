@@ -235,12 +235,12 @@ int dfs_driver()
     }
 
     // sample test, wag mo na ito gets, eto ung parang insta initialized data para di need ng one by one input for testing
-    g.addEdge(0, 1);
-    g.addEdge(0, 2);
-    g.addEdge(1, 2);
-    g.addEdge(2, 0);
-    g.addEdge(2, 3);
-    g.addEdge(3, 3);
+    // g.addEdge(0, 1);
+    // g.addEdge(0, 2);
+    // g.addEdge(1, 2);
+    // g.addEdge(2, 0);
+    // g.addEdge(2, 3);
+    // g.addEdge(3, 3);
 
     //etong separated na statement para sa starting vertex input, gets mo ito para madetermine starting vertex
     cout<<"Enter a starting vertex: ";
