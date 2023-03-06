@@ -318,7 +318,7 @@ int main()
     int x;
     cout << "Enter an operation " << endl;
     cout << " [1] DFS & BFS" << endl;
-    cout << " [3] Guassian Calculator " << endl;
+    cout << " [2] Guassian Calculator " << endl;
     cout << "INPUT : ";
     cin >> x;
 
