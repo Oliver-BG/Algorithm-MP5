@@ -220,21 +220,41 @@ void guassianGraph::DFS(int v)
 
 int dfs_driver()
 {
-    guassianGraph g;
+    // Create a graph given in the above diagram
+
+    // gets mo itong buong line ito before dun sa g.addedge() para dun sa inputs and graph initialization
+    // patanggal na lng ung /* & */ starting sa while tsaka ung // ng cout<<[if you wish to stop etc.]
+    Graph g;
     int input1, input2;
-    cout << "[If you wish to stop, enter a vertex or point that are less than 0]" << endl;
-    while (input1 >= 0 || input2 >= 0)
-    {
-        cout << "Enter A Vertex and point:[eg. 2 4]: ";
+    cout<<"[If you wish to stop, enter a vertex or point that are less than 0]"<<endl;
+    while(input1 >= 0 || input2 >= 0){
+        cout<<"Enter A Vertex and point:[eg. 2 4]: ";
         cin >> input1 >> input2;
-        if (input1 >= 0 || input2 >= 0)
-            g.addEdge(input1, input2);
+        if(input1 >= 0 || input2 >= 0)
+        g.addEdge(input1, input2);
     }
-    cout << "Enter a starting vertex: ";
+
+    // sample test, wag mo na ito gets, eto ung parang insta initialized data para di need ng one by one input for testing
+    g.addEdge(0, 1);
+    g.addEdge(0, 2);
+    g.addEdge(1, 2);
+    g.addEdge(2, 0);
+    g.addEdge(2, 3);
+    g.addEdge(3, 3);
+
+    //etong separated na statement para sa starting vertex input, gets mo ito para madetermine starting vertex
+    cout<<"Enter a starting vertex: ";
     cin >> input1;
-    // Function call
-    cout << endl
+
+    // pang dfs
+    // replace mo na lang ung 2 sa function DFS() sa baba ng "input1"
+    cout << "DFS:" << endl
          << endl;
+    if (!g.visited.empty())
+        g.visited.clear();
+    if (!g.points.empty())
+        while (g.points.empty())
+            g.points.pop();
     g.DFS(input1);
     cout << "\nFollowing is Depth First Traversal"
             " (starting from vertex "
@@ -245,6 +265,27 @@ int dfs_driver()
         g.points.pop();
     }
     cout << "end" << endl;
+
+    // pang bfs
+    // replace mo na lang ung 2 sa function BFS() sa baba ng "input1"
+    cout << "BFS:" << endl
+         << endl;
+    if (!g.visited.empty())
+        g.visited.clear();
+    if (!g.points.empty())
+        while (g.points.empty())
+            g.points.pop();
+    g.BFS(input1);
+    cout << "\nFollowing is Breadth First Traversa;"
+            " (starting from vertex "
+         << input1 << ")\n";
+    while (!g.points.empty())
+    {
+        cout << g.points.front() << " --> ";
+        g.points.pop();
+    }
+    cout << "end" << endl;
+
     return 0;
 }
 
